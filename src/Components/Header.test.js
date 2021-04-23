@@ -10,7 +10,7 @@ it('renders Header without crashing', () => {
   shallow(<Header />);
 });
 
-it("renders header", () => {
+it("renders expected Header output", () => {
   const wrapper = shallow(<Header />);
   const welcome = <h1>FastTable</h1>;
   expect(wrapper.contains(welcome)).toEqual(true);
