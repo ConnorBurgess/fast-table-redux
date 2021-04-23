@@ -19,7 +19,7 @@ function SectionList(props) {
   );
 }
 
-sectionList.propTypes = {
+SectionList.propTypes = {
   sectionList: PropTypes.array,
   onSectionSelection: PropTypes.func
 };
