@@ -23,7 +23,6 @@ class SectionControl extends React.Component {
   }
     render() {
 
-
     return (
       <>
       <NewSectionForm onNewSectionCreation={this.handleAddingNewSectionToList}/>
