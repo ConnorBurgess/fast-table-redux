@@ -10,3 +10,9 @@ configure({adapter: new Adapter()});
 it('renders app without crashing', () => {
   shallow(<App />);
 });
+
+it("renders header", () => {
+  const wrapper = shallow(<Header />);
+  const welcome = <h1>FastTable</h1>;
+  expect(wrapper.contains(welcome)).toEqual(true);
+});
