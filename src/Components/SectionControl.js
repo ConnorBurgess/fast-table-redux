@@ -1,7 +1,7 @@
 import React from 'react';
 import NewSectionForm from './NewSectionForm';
 import SectionList from './SectionList';
-
+import SectionDetail from './SectionDetail';
 
 class SectionControl extends React.Component {
 
@@ -26,36 +26,46 @@ class SectionControl extends React.Component {
       }));
     }
   }
-  
+
   handleAddingNewSectionToList = (newSection) => {
     const newSectionList = this.state.sectionList.concat(newSection);
     this.setState({
-      sectionList: newSectionList, 
+      sectionList: newSectionList,
       formVisible: false
     });
-    console.log(this.state.sectionList);
   }
+
   handleChangingSelectedSection = (id) => {
     const selectedSection = this.state.sectionList.filter(section => section.id === id)[0];
-    this.setState({selectedSection: selectedSection});
+    this.setState({ selectedSection: selectedSection });
   }
-    render() {
-      let currentlyVisibleState = null;
-      let buttonText = null;
-      if (this.state.selectedSection != null) {
-        // currentlyVisibleState = <SectionDetail ticket={this.state.selectedTicket} onClickingDelete={this.handleDeletingTicket} />
-        // buttonText = "Return to Ticket List";
-      } else if (this.state.formVisible) {
-        currentlyVisibleState = <NewSectionForm onNewSectionCreation={this.handleAddingNewSectionToList} />
-        buttonText = "Return to Section List";
-      } else {
-        currentlyVisibleState = <SectionList sectionList={this.state.sectionList} onSectionSelection={this.handleChangingSelectedSection} />
-        buttonText = "Add Section";
-      }
+
+  handleDeletingSection = (id) => {
+    const newSectionList = this.state.sectionList.filter(section => section.id !== id);
+    this.setState({
+      sectionList: newSectionList,
+      selectedSection: null
+    });
+  }
+
+  render() {
+    let currentlyVisibleState = null;
+    let buttonText = null;
+
+    if (this.state.selectedSection != null) {
+      currentlyVisibleState = <SectionDetail section={this.state.selectedSection} onClickingDelete={this.handleDeletingSection} />
+      buttonText = "Return to Section List";
+    } else if (this.state.formVisible) {
+      currentlyVisibleState = <NewSectionForm onNewSectionCreation={this.handleAddingNewSectionToList} />
+      buttonText = "Return to Section List";
+    } else {
+      currentlyVisibleState = <SectionList sectionList={this.state.sectionList} onSectionSelection={this.handleChangingSelectedSection} />
+      buttonText = "Add Section";
+    }
     return (
       <>
-      {currentlyVisibleState}
-     <button onClick={this.handleClick}>{buttonText}</button>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
 
       </>
     )
