@@ -2,10 +2,10 @@
 #### Created By: Connor Burgess 
 * * *
 
-
 ## Description  
 FastTable is a web application with full CRUD that allows restaraunt operations and front desk to manage walk-in guests with speed and ease. Functionality includes tracking number of tables remaining in a server's section, section details, and quickly seating guests.
 * * *
+<img src="./src/img/components.jpg" alt="component diagram">
 
 ## User Stories
 * As a user, I want to see a list/menu of all available server sections. For each section, I want to see its currently seated tables and their table numbers.
@@ -19,7 +19,7 @@ FastTable is a web application with full CRUD that allows restaraunt operations 
 * JavaScript
 * HTML
 * CSS
-* NPM
+* npm
 * Creat React App
 
 * * *
@@ -31,7 +31,7 @@ FastTable is a web application with full CRUD that allows restaraunt operations 
 
 
 ## To Do:
-
+* 
 ## Resources Used:
 
 
