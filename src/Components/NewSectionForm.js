@@ -9,6 +9,7 @@ function NewSectionForm(props) {
     props.onNewSectionCreation({
       name: event.target.name.value,
       tableCount: event.target.tableCount.value,
+      originalCount: event.target.tableCount.value,
       id: v4()
     });
   }

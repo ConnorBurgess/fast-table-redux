@@ -2,7 +2,6 @@ import React from 'react';
 import NewSectionForm from './NewSectionForm';
 import SectionList from './SectionList';
 import SectionDetail from './SectionDetail';
-import SeatTableForm from './SeatTableForm';
 class SectionControl extends React.Component {
 
   constructor(props) {
@@ -43,9 +42,18 @@ class SectionControl extends React.Component {
     const newSectionList = this.state.sectionList.filter(section => section.id !== updatedSection.id).concat(updatedSection).sort();
     this.setState({
       sectionList: newSectionList,
-      seatingFormVisible: false
     });
   }
+  
+  handleReleasingTable = (updatedSection) => {
+    if (updatedSection.tableCount < updatedSection.originalCount) {
+      updatedSection.tableCount++;
+  }
+  const newSectionList = this.state.sectionList.filter(section => section.id !== updatedSection.id).concat(updatedSection).sort();
+  this.setState({
+    sectionList: newSectionList
+  })
+}
   handleChangingSelectedSection = (id) => {
     const selectedSection = this.state.sectionList.filter(section => section.id === id)[0];
     this.setState({ selectedSection: selectedSection });
@@ -58,19 +66,16 @@ class SectionControl extends React.Component {
       selectedSection: null
     });
   }
-  // handleSeatingSection = (id) => {
-  //   const newSectionList = this.state.sectionList.filter(section => section.id !== id);
-  //   this.section.setState({
-  //     ...state,
-  //     tableCount: tableCount - 1
-  //   });
-  // }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.selectedSection != null) {
-      currentlyVisibleState = <SectionDetail section={this.state.selectedSection} onClickingSeat={this.handleSeatingTable} onClickingDelete={this.handleDeletingSection} />
+      currentlyVisibleState = <SectionDetail section={this.state.selectedSection} 
+      onClickingSeat={this.handleSeatingTable} 
+      onClickingDelete={this.handleDeletingSection} 
+      onClickingRelease={this.handleReleasingTable} />
       buttonText = "Return to Section List";
     } else if (this.state.formVisible) {
       console.log(this.state.sectionList);
