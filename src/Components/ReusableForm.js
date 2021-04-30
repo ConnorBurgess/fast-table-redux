@@ -11,7 +11,7 @@ function ReusableForm(props) {
           name='name'
           placeholder='Server name'
         />
-         <input
+        <input
           type='text'
           name='tableCount'
           placeholder='Table Count'
