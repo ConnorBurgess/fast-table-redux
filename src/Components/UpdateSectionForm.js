@@ -3,27 +3,26 @@ import { v4 } from 'uuid';
 import PropTypes from 'prop-types';
 import ReusableForm from './ReusableForm';
 
-function NewSectionForm(props) {
-  const {onNewSectionCreation} = props;
-  function handleNewSectionFormSubmission(event) {
+function UpdateSectionForm(props) {
+  function handleUpdateSectionFormSubmission(event) {
     event.preventDefault();
-    onNewSectionCreation({
+    props.onSectionUpdate({
       name: event.target.name.value,
       tableCount: event.target.tableCount.value,
       originalCount: event.target.tableCount.value,
-      id: v4()
+      id: props.section
     });
   }
 
   return (
     <>
       <ReusableForm
-        formSubmissionHandler={handleNewSectionFormSubmission}
-        buttonText="Create Section"
-        headerText="New Section"
+        formSubmissionHandler={handleUpdateSectionFormSubmission}
+        buttonText="Update"
+        headerText="Edit Section"
       />
     </>
   )
 }
 
-export default NewSectionForm;
+export default UpdateSectionForm;
