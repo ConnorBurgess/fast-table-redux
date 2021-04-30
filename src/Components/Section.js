@@ -17,7 +17,7 @@ Section.propTypes = {
   name: PropTypes.string.isRequired,
   tableCount: PropTypes.string.isRequired,
   id: PropTypes.string,
-  whenSectionClicked: PropTypes.func
+  whenSectionClicked: PropTypes.func,
 };
 
 export default Section;

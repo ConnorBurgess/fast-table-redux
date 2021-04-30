@@ -3,7 +3,7 @@
 * * *
 
 ## Description  
-FastTable is a web application with full CRUD that allows restaraunt operations and front desk to manage walk-in guests with speed and ease. Functionality includes tracking number of tables remaining in a server's section, section details, and quickly seating guests.
+FastTable is a web application with full CRUD that allows restaurant operations and front desk to manage walk-in guests with speed and ease. Functionality includes tracking number of tables remaining in a server's section, section details, and quickly seating guests.
 * * *
 <img src="./src/img/components.jpg" alt="component diagram">
 
@@ -17,10 +17,12 @@ FastTable is a web application with full CRUD that allows restaraunt operations 
 ## Technologies used
 * React
 * JavaScript
+* Jest
+* Enzyme
 * HTML
 * CSS
 * npm
-* Creat React App
+* Create React App
 
 * * *
 ## Setup
@@ -28,6 +30,7 @@ FastTable is a web application with full CRUD that allows restaraunt operations 
 * Open in terminal or IDE/text editor of choice
 * Ensure terminal is in fast-table directory and type `npm start` to load local server
 * Local server should open automatically in browser but otherwise navigate to http://localhost:3000/ (default port) in browser URL
+* Run unit tests by navigating to fast-table/src and type `npm test`
 
 
 ## To Do:

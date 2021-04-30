@@ -2,11 +2,11 @@ import React from "react";
 import { shallow, mount, configure } from "enzyme";
 import toJson from "enzyme-to-json";
 import Adapter from 'enzyme-adapter-react-16';
-import ReusableForm from "./ReusableForm";
+import Section from "../Section";
 configure({adapter: new Adapter()});
-describe("ReusableForm component", () => {
+describe("Section component", () => {
 
-it('renders ReusableForm without crashing', () => {
-  shallow(<ReusableForm />);
+it('renders Section without crashing', () => {
+  shallow(<Section />);
 });
 })

@@ -47,7 +47,13 @@ class SectionControl extends React.Component {
       selectedSection: null
     });
   }
-
+  handleSeatingSection = (id) => {
+    const newSectionList = this.state.sectionList.filter(section => section.id !== id);
+    this.section.setState({
+      ...state,
+      tableCount: tableCount - 1
+    });
+  }
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -56,6 +62,7 @@ class SectionControl extends React.Component {
       currentlyVisibleState = <SectionDetail section={this.state.selectedSection} onClickingDelete={this.handleDeletingSection} />
       buttonText = "Return to Section List";
     } else if (this.state.formVisible) {
+      console.log(this.state.sectionList);
       currentlyVisibleState = <NewSectionForm onNewSectionCreation={this.handleAddingNewSectionToList} />
       buttonText = "Return to Section List";
     } else {
