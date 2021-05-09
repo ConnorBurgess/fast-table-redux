@@ -1,7 +1,8 @@
 export default (state = {}, action) => {
   const { names, location, issue, id } = action;
+  
   switch (action.type) {
-  case 'ADD_SECTION':
+  case c.ADD_SECTION:
     return Object.assign({}, state, {
       [id]: {
         names: names,
@@ -10,6 +11,12 @@ export default (state = {}, action) => {
         id: id
       }
     });
+
+    case c.DELETE_SECTION:
+      let newState = {...state};
+      delete newState[id];
+      return newState;
+
   default:
     return state;
   }
