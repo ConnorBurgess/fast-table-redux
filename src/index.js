@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Components/App';
-
+import { provider } from 'react-redux';
+import { createStore } from 'redux';
+import sectionListReducer from './reducers/section-list-reducer';
+ const store = createStore(sectionListReducer);
+ 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
