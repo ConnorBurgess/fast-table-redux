@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 function Section(props) {
   const {whenSectionClicked, whenUpdateSectionClicked, tableCount, name, id} = props;
-  console.log(whenUpdateSectionClicked)
   return (
     <>
       <div onClick = {() => whenSectionClicked(id)}>

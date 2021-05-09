@@ -13,16 +13,19 @@ function UpdateSectionForm(props) {
       id: props.section
     });
   }
-
+  console.log(props);
   return (
     <>
       <ReusableForm
         formSubmissionHandler={handleUpdateSectionFormSubmission}
         buttonText="Update"
         headerText="Edit Section"
-      />
+        />
     </>
   )
 }
-
+UpdateSectionForm.propTypes = {
+  section: PropTypes.string.isRequired,
+  onSectionUpdate: PropTypes.func
+};
 export default UpdateSectionForm;
