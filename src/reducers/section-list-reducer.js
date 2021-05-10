@@ -1,3 +1,5 @@
+import * as c from '../actions/ActionTypes'
+
 export default (state = {}, action) => {
   const { names, location, issue, id } = action;
   

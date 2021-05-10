@@ -12,7 +12,7 @@ export const updateSection = id => ({
 export const addSection = section => {
   const {name, tableCount, originalCount, id} = section;
 
-  return{
+  return {
   type: c.ADD_SECTION,
   name: name,
   tableCount: tableCount,

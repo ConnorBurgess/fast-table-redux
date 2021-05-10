@@ -1,7 +1,7 @@
 import formReducer from './form-reducer';
 import sectionListReducer from './section-list-reducer';
 import { combineReducers } from 'redux';
-const rootReducer = combineReducer({
+const rootReducer = combineReducers({
   formreducer : formReducer,
   sectionListReducer : sectionListReducer
 });

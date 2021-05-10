@@ -3,6 +3,8 @@ import NewSectionForm from './NewSectionForm';
 import SectionList from './SectionList';
 import SectionDetail from './SectionDetail';
 import UpdateSectionForm from './UpdateSectionForm'
+import { connect } from 'react-redux'
+import * as a from '../actions/index'
 class SectionControl extends React.Component {
 
   constructor(props) {
