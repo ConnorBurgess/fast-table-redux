@@ -10,24 +10,21 @@ class SectionControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisible: false,
-      seatingFormVisible: false,
       updateFormVisible: false,
-      sectionList: [],
       selectedSection: null
     };
   }
 
   handleClick = () => {
+    const { dispatch } = this.props;
     if (this.state.selectedSection != null) {
       this.setState({
         formVisible: false,
         selectedSection: null
       });
     } else {
-      this.setState(prevState => ({
-        formVisible: !prevState.formVisible
-      }));
+      const toggleForm = a.toggleForm();
+      dispatch(toggleForm);
     }
   }
 
@@ -68,12 +65,12 @@ class SectionControl extends React.Component {
     })
   }
   handleChangingSelectedSection = (id) => {
-    const selectedSection = this.state.sectionList.filter(section => section.id === id)[0];
+    const selectedSection = this.props.completeSectionList[id];
     this.setState({ selectedSection: selectedSection });
   }
 
   handleDisplayingUpdateForm = (id) => {
-    const selectedSection = this.state.sectionList.filter(section => section.id === id)[0];
+    const selectedSection = this.props.completeSectionList[id];
     this.setState({
       updateFormVisible: true,
       selectedSection: selectedSection
@@ -81,15 +78,16 @@ class SectionControl extends React.Component {
   }
 
   handleDeletingSection = (id) => {
-    const newSectionList = this.state.sectionList.filter(section => section.id !== id);
+    const { dispatch } = this.props;
+    const action = a.deleteSection(id);
+    dispatch(action);
     this.setState({
-      sectionList: newSectionList,
       selectedSection: null
     });
   }
 
   render() {
-console.log(this.props.completeSectionList)
+console.log(this.props)
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.updateFormVisible) {
@@ -101,7 +99,7 @@ console.log(this.props.completeSectionList)
         onClickingDelete={this.handleDeletingSection}
         onClickingRelease={this.handleReleasingTable} />
       buttonText = "Return to Section List";
-    } else if (this.state.formVisible) {
+    } else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewSectionForm onNewSectionCreation={this.handleAddingNewSectionToList} />
       buttonText = "Return to Section List";
     } else {
@@ -127,7 +125,7 @@ SectionControl.propTypes = {
 const mapStateToProps = state => {
   return {
     completeSectionList: state.completeSectionList,
-    formVisibleOnPages: state.formVisibleOnPage
+    formVisibleOnPage: state.formVisibleOnPage
   }
 }
 
