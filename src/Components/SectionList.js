@@ -3,11 +3,11 @@ import Section from './Section';
 import PropTypes from 'prop-types';
 
 function SectionList(props) {
-  const { onSectionSelection, onUpdateSection } = props;
+  const { onSectionSelection, onUpdateSection, sectionList } = props;
   return (
     <>
       <hr />
-      {props.sectionList.map((section) =>
+      {Object.values(sectionList).map((section) =>
         <Section
           whenSectionClicked={onSectionSelection}
           whenUpdateSectionClicked={onUpdateSection}
@@ -22,7 +22,7 @@ function SectionList(props) {
 }
 
 SectionList.propTypes = {
-  sectionList: PropTypes.array,
+  sectionList: PropTypes.object,
   onSectionSelection: PropTypes.func,
   onUpdateSection: PropTypes.func
 };

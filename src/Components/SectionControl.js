@@ -89,7 +89,7 @@ class SectionControl extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+console.log(this.props.completeSectionList)
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.updateFormVisible) {
@@ -106,7 +106,7 @@ class SectionControl extends React.Component {
       buttonText = "Return to Section List";
     } else {
       currentlyVisibleState = <SectionList
-        sectionList={this.state.sectionList}
+        sectionList={this.props.completeSectionList}
         onSectionSelection={this.handleChangingSelectedSection}
         onUpdateSection={this.handleDisplayingUpdateForm} />
       buttonText = "Add a new server section";
