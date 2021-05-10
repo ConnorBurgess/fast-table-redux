@@ -1,15 +1,15 @@
 import * as c from '../actions/ActionTypes'
 
 export default (state = {}, action) => {
-  const { names, location, issue, id } = action;
+  const { name, tableCount, originalCount, id } = action;
   
   switch (action.type) {
   case c.ADD_SECTION:
     return Object.assign({}, state, {
       [id]: {
-        names: names,
-        location: location,
-        issue: issue,
+        name: name,
+        tableCount: tableCount,
+        originalCount: originalCount, 
         id: id
       }
     });

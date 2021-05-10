@@ -5,8 +5,8 @@ import SectionDetail from './SectionDetail';
 import UpdateSectionForm from './UpdateSectionForm'
 import { connect } from 'react-redux'
 import * as a from '../actions/index'
+import PropTypes from 'prop-types';
 class SectionControl extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -32,11 +32,11 @@ class SectionControl extends React.Component {
   }
 
   handleAddingNewSectionToList = (newSection) => {
-    const newSectionList = this.state.sectionList.concat(newSection);
-    this.setState({
-      sectionList: newSectionList,
-      formVisible: false
-    });
+    const { dispatch } = this.props;
+    const action = a.addSection(newSection)
+    dispatch(action);
+    const toggleFormAction = a.toggleForm();
+    dispatch(toggleFormAction);
   }
 
   handleUpdatingSection = (updatedSection) => {
@@ -89,6 +89,7 @@ class SectionControl extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.updateFormVisible) {
@@ -118,5 +119,17 @@ class SectionControl extends React.Component {
     )
   }
 }
+SectionControl.propTypes = {
+  completeSectionList: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
+};
 
+const mapStateToProps = state => {
+  return {
+    completeSectionList: state.completeSectionList,
+    formVisibleOnPages: state.formVisibleOnPage
+  }
+}
+
+SectionControl = connect(mapStateToProps)(SectionControl);
 export default SectionControl;
