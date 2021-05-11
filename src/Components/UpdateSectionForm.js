@@ -8,12 +8,11 @@ function UpdateSectionForm(props) {
     event.preventDefault();
     props.onSectionUpdate({
       name: event.target.name.value,
-      tableCount: event.target.tableCount.value,
-      originalCount: event.target.tableCount.value,
+      tableCount: parseInt(event.target.tableCount.value),
+      originalCount: parseInt(event.target.tableCount.value),
       id: props.section
     });
   }
-  console.log(props);
   return (
     <>
       <ReusableForm
@@ -25,7 +24,7 @@ function UpdateSectionForm(props) {
   )
 }
 UpdateSectionForm.propTypes = {
-  section: PropTypes.string.isRequired,
+  section: PropTypes.object.isRequired,
   onSectionUpdate: PropTypes.func
 };
 export default UpdateSectionForm;

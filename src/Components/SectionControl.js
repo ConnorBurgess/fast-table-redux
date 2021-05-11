@@ -16,9 +16,12 @@ class SectionControl extends React.Component {
 
   handleClick = () => {
     const { dispatch } = this.props;
+    if (this.props.updateFormVisible) {
+      const updateFormAction = a.updateForm();
+      dispatch(updateFormAction);
+    }
     if (this.state.selectedSection != null) {
       this.setState({
-        formVisible: false,
         selectedSection: null
       });
     } else {
@@ -37,7 +40,7 @@ class SectionControl extends React.Component {
 
   handleUpdatingSection = (updatedSection) => {
     const { dispatch } = this.props;
-    const action = a.updateSection(updatedSection)
+    const action = a.addSection(updatedSection)
     dispatch(action);
     const updateFormAction = a.updateForm();
     dispatch(updateFormAction);
@@ -71,9 +74,11 @@ class SectionControl extends React.Component {
   }
 
   handleDisplayingUpdateForm = (id) => {
+    const { dispatch } = this.props;
     const selectedSection = this.props.completeSectionList[id];
+    const updateFormAction = a.updateForm();
+    dispatch(updateFormAction);
     this.setState({
-      updateFormVisible: true,
       selectedSection: selectedSection
     })
   }
@@ -88,10 +93,9 @@ class SectionControl extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.updateFormVisible) {
+    if (this.props.updateFormVisible) {
       currentlyVisibleState = <UpdateSectionForm section={this.state.selectedSection.id} onSectionUpdate={this.handleUpdatingSection} />
       buttonText = "Return to section List"
     } else if (this.state.selectedSection != null) {
