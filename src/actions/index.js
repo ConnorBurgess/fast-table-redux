@@ -5,7 +5,7 @@ export const deleteSection = id => ({
 });
 
 export const updateSection = id => ({
-  type: c.DELETE_SECTION,
+  type: c.UPDATE_SECTION,
   id
 });
 
@@ -22,5 +22,9 @@ export const addSection = section => {
 
 export const toggleForm = () => ({
   type: c.TOGGLE_FORM
+});
+
+export const updateForm = () => ({
+  type: c.UPDATE_FORM
 });
 

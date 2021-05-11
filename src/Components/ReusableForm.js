@@ -12,7 +12,7 @@ function ReusableForm(props) {
           placeholder='Server name'
         />
         <input
-          type='text'
+          type='number'
           name='tableCount'
           placeholder='Table Count'
         />

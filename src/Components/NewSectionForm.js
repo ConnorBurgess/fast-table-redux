@@ -9,8 +9,8 @@ function NewSectionForm(props) {
     event.preventDefault();
     onNewSectionCreation({
       name: event.target.name.value,
-      tableCount: event.target.tableCount.value,
-      originalCount: event.target.tableCount.value,
+      tableCount: parseInt(event.target.tableCount.value),
+      originalCount: parseInt(event.target.tableCount.value),
       id: v4()
     });
   }

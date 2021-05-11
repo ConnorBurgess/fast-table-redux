@@ -10,7 +10,6 @@ class SectionControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      updateFormVisible: false,
       selectedSection: null
     };
   }
@@ -37,10 +36,12 @@ class SectionControl extends React.Component {
   }
 
   handleUpdatingSection = (updatedSection) => {
-    const newSectionList = this.state.sectionList.filter(section => section.id !== updatedSection.id).concat(updatedSection);
+    const { dispatch } = this.props;
+    const action = a.updateSection(updatedSection)
+    dispatch(action);
+    const updateFormAction = a.updateForm();
+    dispatch(updateFormAction);
     this.setState({
-      sectionList: newSectionList,
-      updateFormVisible: false,
       selectedSection: null
     })
   }
@@ -48,22 +49,22 @@ class SectionControl extends React.Component {
   handleSeatingTable = (updatedSection) => {
     if (updatedSection.tableCount > 0) {
       updatedSection.tableCount--;
+      const { dispatch } = this.props;
+      const action = a.updateSection(updatedSection);
+      dispatch(action);
     }
-    const newSectionList = this.state.sectionList.filter(section => section.id !== updatedSection.id).concat(updatedSection);
-    this.setState({
-      sectionList: newSectionList,
-    });
+
   }
 
   handleReleasingTable = (updatedSection) => {
     if (updatedSection.tableCount < updatedSection.originalCount) {
       updatedSection.tableCount++;
+      const { dispatch } = this.props;
+      const action = a.updateSection(updatedSection)
+      dispatch(action);
     }
-    const newSectionList = this.state.sectionList.filter(section => section.id !== updatedSection.id).concat(updatedSection);
-    this.setState({
-      sectionList: newSectionList
-    })
   }
+  
   handleChangingSelectedSection = (id) => {
     const selectedSection = this.props.completeSectionList[id];
     this.setState({ selectedSection: selectedSection });
@@ -87,7 +88,7 @@ class SectionControl extends React.Component {
   }
 
   render() {
-console.log(this.props)
+    console.log(this.state)
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.updateFormVisible) {
@@ -125,7 +126,8 @@ SectionControl.propTypes = {
 const mapStateToProps = state => {
   return {
     completeSectionList: state.completeSectionList,
-    formVisibleOnPage: state.formVisibleOnPage
+    formVisibleOnPage: state.formVisibleOnPage,
+    updateFormVisible: state.updateFormVisible
   }
 }
 

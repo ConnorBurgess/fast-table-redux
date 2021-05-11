@@ -17,8 +17,8 @@ function Section(props) {
 
 Section.propTypes = {
   name: PropTypes.string.isRequired,
-  tableCount: PropTypes.string.isRequired,
-  orginalCount: PropTypes.string,
+  tableCount: PropTypes.number.isRequired,
+  orginalCount: PropTypes.number,
   id: PropTypes.string,
   whenSectionClicked: PropTypes.func,
   whenUpdateSectionClicked: PropTypes.func

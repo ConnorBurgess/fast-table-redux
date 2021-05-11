@@ -5,6 +5,7 @@ export default (state = {}, action) => {
   
   switch (action.type) {
   case c.ADD_SECTION:
+    case c.UPDATE_SECTION:
     return Object.assign({}, state, {
       [id]: {
         name: name,
