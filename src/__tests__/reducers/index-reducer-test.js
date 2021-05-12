@@ -52,5 +52,4 @@ describe("rootReducer", () => {
     store.dispatch(action);
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
   });
-
 });
