@@ -2,7 +2,7 @@ import rootReducer from '../../reducers/index';
 import formVisibleReducer from '../../reducers/form-reducer';
 import sectionListReducer from '../../reducers/section-list-reducer';
 import selectSectionReducer from '../../reducers/select-section-reducer';
-
+import updateFormReducer from '../../reducers/update-form-reducer';
 import { createStore } from 'redux';
 
 describe("rootReducer", () => {
@@ -28,4 +28,9 @@ describe("rootReducer", () => {
   test('Check that initial state of selectSectionReducer matches root reducer', () => {
     expect(store.getState().selectedSection).toEqual(selectSectionReducer(undefined, { type: null }));
   });
+
+  test('Check that initial state of updateFormReducer matches root reducer', () => {
+    expect(store.getState().updateFormVisible).toEqual(updateFormReducer(undefined, { type: null }));
+  });
+
 });
