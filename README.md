@@ -1,9 +1,9 @@
-# FastTable
+# FastTable Redux
 #### Created By: Connor Burgess 
 * * *
 
 ## Description  
-FastTable is a web application with full CRUD that allows restaurant operations and front desk to manage walk-in guests with speed and ease. Functionality includes tracking number of tables remaining in a server's section, section details, and quickly seating guests.
+FastTable is a web application with full CRUD that allows restaurant operations and front desk to manage walk-in guests with speed and ease. Utilizes reduce to manage state and uses Jest/Enzyme for unit testing. Functionality includes tracking number of tables remaining in a server's section, section details, and quickly seating guests.
 * * *
 <img src="./src/img/components.jpg" alt="component diagram">
 
@@ -16,6 +16,7 @@ FastTable is a web application with full CRUD that allows restaurant operations 
 
 ## Technologies used
 * React
+* Redux
 * JavaScript
 * Jest
 * Enzyme
@@ -31,13 +32,6 @@ FastTable is a web application with full CRUD that allows restaurant operations 
 * Ensure terminal is in fast-table directory and type `npm start` to load local server
 * Local server should open automatically in browser but otherwise navigate to http://localhost:3000/ (default port) in browser URL
 * Run unit tests by navigating to fast-table/src and type `npm test`
-
-
-## To Do:
-* 
-## Resources Used:
-
-
 ## Additional comments:
 * Created on 4/23/21  
 * * *

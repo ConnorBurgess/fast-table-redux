@@ -4,9 +4,9 @@ export const deleteSection = id => ({
   id
 });
 
-export const updateSection = id => ({
+export const updateSection = section => ({
   type: c.UPDATE_SECTION,
-  id
+  section
 });
 export const selectSection = section => ({
   type: c.SELECT_SECTION,

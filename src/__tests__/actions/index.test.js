@@ -20,4 +20,17 @@ describe('FastTable actions', () => {
     });
   });
 
+  it('addSection should create ADD_SECTION action', () => {
+    expect(actions.addSection({      
+    name: "Joe",
+    tableCount: 3,
+    originalCount: 3,
+    id: 1})).toEqual({
+      type: 'ADD_SECTION',
+      name: "Joe",
+      tableCount: 3,
+      originalCount: 3,
+      id: 1
+    });
+  });
 });
