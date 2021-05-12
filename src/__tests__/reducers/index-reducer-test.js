@@ -1,5 +1,6 @@
 import rootReducer from '../../reducers/index';
 import formVisibleReducer from '../../reducers/form-reducer';
+import sectionListReducer from '../../reducers/section-list-reducer';
 
 import { createStore } from 'redux';
 
@@ -17,5 +18,9 @@ describe("rootReducer", () => {
 
   test('Check that initial state of formVisibleReducer matches root reducer', () => {
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, { type: null }));
+  });
+
+  test('Check that initial state of sectionListReducer matches root reducer', () => {
+    expect(store.getState().completeSectionList).toEqual(sectionListReducer(undefined, { type: null }));
   });
 });
