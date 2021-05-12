@@ -33,4 +33,16 @@ describe("rootReducer", () => {
     expect(store.getState().updateFormVisible).toEqual(updateFormReducer(undefined, { type: null }));
   });
 
+
+  test('Check that ADD_SECTION action works for sectionListReducer and root reducer', () => {
+    const action = {
+      type: 'ADD_SECTION',
+      name: "Joe",
+      tableCount: 3,
+      originalCount: 3, 
+      id: 1
+    }
+    store.dispatch(action);
+    expect(store.getState().completeSectionList).toEqual(sectionListReducer(undefined, action));
+  });
 });
