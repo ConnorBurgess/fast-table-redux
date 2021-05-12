@@ -33,16 +33,24 @@ describe("rootReducer", () => {
     expect(store.getState().updateFormVisible).toEqual(updateFormReducer(undefined, { type: null }));
   });
 
-
   test('Check that ADD_SECTION action works for sectionListReducer and root reducer', () => {
     const action = {
       type: 'ADD_SECTION',
       name: "Joe",
       tableCount: 3,
-      originalCount: 3, 
+      originalCount: 3,
       id: 1
     }
     store.dispatch(action);
     expect(store.getState().completeSectionList).toEqual(sectionListReducer(undefined, action));
   });
+
+  test('Check that TOGGLE_FORM action works for formReducer and root reducer', () => {
+    const action = {
+      type: 'TOGGLE_FORM'
+    }
+    store.dispatch(action);
+    expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
+  });
+
 });
