@@ -1,7 +1,6 @@
 import React from "react";
-import { shallow, mount, configure } from "enzyme";
-import Header from "../Header";
-import toJson from "enzyme-to-json";
+import { shallow, configure } from "enzyme";
+import Header from "../Components/Header";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 describe("Header component", () => {

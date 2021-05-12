@@ -1,7 +1,6 @@
 import React from "react";
-import { shallow, mount, configure } from "enzyme";
-import Section from "../Section";
-import toJson from "enzyme-to-json";
+import { shallow, configure } from "enzyme";
+import Section from "../Components/Section";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 describe("Section component", () => {

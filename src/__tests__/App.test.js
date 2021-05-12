@@ -1,12 +1,14 @@
 import React from "react";
 import { shallow, mount, configure } from "enzyme";
+import App from "../Components/App";
+import Header from "../Components/Header";
 import toJson from "enzyme-to-json";
 import Adapter from 'enzyme-adapter-react-16';
-import Section from "../Section";
 configure({adapter: new Adapter()});
-describe("Section component", () => {
+describe("App component", () => {
 
-it('renders Section without crashing', () => {
-  shallow(<Section />);
+it('renders App without crashing', () => {
+  shallow(<App />);
 });
-})
+
+});
