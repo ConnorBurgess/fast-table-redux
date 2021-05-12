@@ -1,5 +1,5 @@
 import selectSectionReducer from '../../reducers/select-section-reducer';
-describe('sectionListReducer', () => {
+describe('selectSectionReducer', () => {
   const currentState = {
     1: { name: "Joe",
     tableCount: 3,
