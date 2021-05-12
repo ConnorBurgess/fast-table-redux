@@ -5,4 +5,7 @@ describe('sectionListReducer', () => {
     expect(updateFormReducer(false, { type: null })).toEqual(false);
   });
 
+  test('Should toggle update form visibility state to true', () => {
+    expect(updateFormReducer(false, { type: 'UPDATE_FORM' })).toEqual(true);
+  });
 });
