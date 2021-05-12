@@ -9,9 +9,7 @@ import PropTypes from 'prop-types';
 class SectionControl extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedSection: null
-    };
+    this.state = {};
   }
 
   handleClick = () => {
@@ -20,10 +18,10 @@ class SectionControl extends React.Component {
       const updateFormAction = a.updateForm();
       dispatch(updateFormAction);
     }
-    if (this.state.selectedSection != null) {
-      this.setState({
-        selectedSection: null
-      });
+    if (this.props.selectedSection != null) {
+      const selectedSectionAction = a.selectSection(null);
+      dispatch(selectedSectionAction);
+
     } else {
       const toggleForm = a.toggleForm();
       dispatch(toggleForm);
@@ -44,9 +42,8 @@ class SectionControl extends React.Component {
     dispatch(action);
     const updateFormAction = a.updateForm();
     dispatch(updateFormAction);
-    this.setState({
-      selectedSection: null
-    })
+    const selectedSectionAction = a.selectSection(null);
+    dispatch(selectedSectionAction);
   }
 
   handleSeatingTable = (updatedSection) => {
@@ -69,37 +66,37 @@ class SectionControl extends React.Component {
   }
   
   handleChangingSelectedSection = (id) => {
+    const { dispatch } = this.props;
     const selectedSection = this.props.completeSectionList[id];
-    this.setState({ selectedSection: selectedSection });
+    const selectedSectionAction = a.selectSection(selectedSection);
+    dispatch(selectedSectionAction);
   }
 
   handleDisplayingUpdateForm = (id) => {
     const { dispatch } = this.props;
     const selectedSection = this.props.completeSectionList[id];
+    const selectedSectionAction = a.selectSection(selectedSection);
+    dispatch(selectedSectionAction);
     const updateFormAction = a.updateForm();
     dispatch(updateFormAction);
-    this.setState({
-      selectedSection: selectedSection
-    })
   }
 
   handleDeletingSection = (id) => {
     const { dispatch } = this.props;
     const action = a.deleteSection(id);
     dispatch(action);
-    this.setState({
-      selectedSection: null
-    });
+    const selectedSectionAction = a.selectSection(null);
+    dispatch(selectedSectionAction);
   }
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.props.updateFormVisible) {
-      currentlyVisibleState = <UpdateSectionForm section={this.state.selectedSection.id} onSectionUpdate={this.handleUpdatingSection} />
+      currentlyVisibleState = <UpdateSectionForm section={this.props.selectedSection.id} onSectionUpdate={this.handleUpdatingSection} />
       buttonText = "Return to section List"
-    } else if (this.state.selectedSection != null) {
-      currentlyVisibleState = <SectionDetail section={this.state.selectedSection}
+    } else if (this.props.selectedSection != null) {
+      currentlyVisibleState = <SectionDetail section={this.props.selectedSection}
         onClickingSeat={this.handleSeatingTable}
         onClickingDelete={this.handleDeletingSection}
         onClickingRelease={this.handleReleasingTable} />
@@ -131,7 +128,8 @@ const mapStateToProps = state => {
   return {
     completeSectionList: state.completeSectionList,
     formVisibleOnPage: state.formVisibleOnPage,
-    updateFormVisible: state.updateFormVisible
+    updateFormVisible: state.updateFormVisible,
+    selectedSection: state.selectedSection
   }
 }
 

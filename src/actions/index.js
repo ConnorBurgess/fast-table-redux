@@ -8,7 +8,10 @@ export const updateSection = id => ({
   type: c.UPDATE_SECTION,
   id
 });
-
+export const selectSection = section => ({
+  type: c.SELECT_SECTION,
+  section
+});
 export const addSection = section => {
   const {name, tableCount, originalCount, id} = section;
 

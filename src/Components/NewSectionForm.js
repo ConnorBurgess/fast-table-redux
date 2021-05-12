@@ -26,4 +26,8 @@ function NewSectionForm(props) {
   )
 }
 
+NewSectionForm.propTypes = {
+  currentlyVisibleState: PropTypes.func,
+  onNewSectionCreation: PropTypes.func
+};
 export default NewSectionForm;

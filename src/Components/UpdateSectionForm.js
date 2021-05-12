@@ -1,5 +1,4 @@
 import React from 'react';
-import { v4 } from 'uuid';
 import PropTypes from 'prop-types';
 import ReusableForm from './ReusableForm';
 
@@ -24,7 +23,7 @@ function UpdateSectionForm(props) {
   )
 }
 UpdateSectionForm.propTypes = {
-  section: PropTypes.object.isRequired,
+  section: PropTypes.string.isRequired,
   onSectionUpdate: PropTypes.func
 };
 export default UpdateSectionForm;
