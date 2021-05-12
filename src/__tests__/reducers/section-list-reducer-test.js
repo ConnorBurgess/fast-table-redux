@@ -1,6 +1,16 @@
 import sectionListReducer from '../../reducers/section-list-reducer';
 
 describe('sectionListReducer', () => {
+  const currentState = {
+    1: { name: "Joe",
+    tableCount: 3,
+    originalCount: 3,
+    id: 1 },
+    2: { name: "Janine",
+    tableCount: 3,
+    originalCount: 3,
+    id: 2 }
+  }
   let action;
   const sectionData = {
     type: 'ADD_SECTION',
@@ -32,6 +42,20 @@ describe('sectionListReducer', () => {
         id: id
       }
     });
+    
   });
+  test('Should successfully delete a section', () => {
+    action = {
+      type: 'DELETE_SECTION',
+      id: 1
+    };
+    expect(sectionListReducer(currentState, action)).toEqual({
+      2: { name: "Janine",
+      tableCount: 3,
+      originalCount: 3,
+      id: 2 }
+    });
+  });
+  
 
 });
