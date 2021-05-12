@@ -33,4 +33,19 @@ describe('FastTable actions', () => {
       id: 1
     });
   });
+  
+  it('selectSection should create SELECT_SECTION action', () => {
+    expect(actions.selectSection({      
+    name: "Joe",
+    tableCount: 3,
+    originalCount: 3,
+    id: 1})).toEqual({
+      type: 'SELECT_SECTION',
+      section : { 
+      name: "Joe",
+      tableCount: 3,
+      originalCount: 3,
+      id: 1 }
+    });
+  });
 });
